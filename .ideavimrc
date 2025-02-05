@@ -19,10 +19,10 @@ set incsearch
 map Q gq
 " Don't use Ex mode, use Q for formatting. I don't actually know what this does but I'm sure it's great.
 
-imap <C-v> <C-r>+
+imap <C-v> <Action>($Paste)
 " Lets us use CTRL+V to paste from the system clipboard while in insert mode
 
-vmap <C-v> "+y
+vmap <C-c> <Action>($Copy)
 " Lets us use CTRL+C to copy to the system clipboard in visual mode
 
 " # Plugins
