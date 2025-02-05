@@ -1,4 +1,4 @@
-<template name="nmap" value="nmap &lt;Leader&gt;$COMMAND$ :action $CLIPBOARD$&lt;cr&gt;" toReformat="false" toShortenFQNames="true">
+<template name="nmap" value="nmap &lt;Leader&gt;$COMMAND$ &lt;Action&gt;($CLIPBOARD$)" toReformat="false" toShortenFQNames="true">
   <variable name="COMMAND" expression="" defaultValue="aa" alwaysStopAt="true" />
   <variable name="CLIPBOARD" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
   <context>
