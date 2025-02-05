@@ -1,0 +1,115 @@
+" # Basic Settings
+set number
+set relativenumber
+" These give you relative line numbers, but still show the current line you're on, which is nice because you can do, for example '8k' to go up 8 lines. Turn this off when pair programming because it can be very confusing to other people.
+
+set ideajoin
+set ideamarks
+" Uses the IDEA versions of vim commands which are pretty much just better than the alternatives.
+
+set visualbell
+" Disables the horrible bell sound
+
+set scrolloff=2
+" This is the default for this and I see no reason to change it.
+
+set incsearch
+" Do incremental searching.
+
+map Q gq
+" Don't use Ex mode, use Q for formatting. I don't actually know what this does but I'm sure it's great.
+
+imap <C-v> <C-r>+
+" Lets us use CTRL+V to paste from the system clipboard while in insert mode
+
+vmap <C-v> "+y
+" Lets us use CTRL+C to copy to the system clipboard in visual mode
+
+" # Plugins
+
+" ## Text Objects
+set argtextobj
+" Gives you the 'a' text object for an argument. 'daa' deletes an argument and the comma, 'dia' doesn't delete the comma.
+
+set textobj-entire
+" Gives you the 'e' text object for selecting the entire buffer
+
+set textobj-indent
+Plug 'michaeljsmith/vim-indent-object'
+" Gives you the 'i' text object for selecting lines at the current indent level, eg. 'vii' to visual select those lines TODO: not sure why I have both of these
+
+" ## Other Plugins
+set commentary
+" I usually use visual mode and CTRL+/ instead of this, but it might be better to use this instead
+
+set surround
+" Despite the confusing 'ysaW{' binds for this, it's extremely useful TODO: why does it put spaces around the things as well { though }
+
+" # Leader mappings
+let mapleader="\<Space>"
+" Gives you spacemacs style keybinds
+
+nmap <Leader>; A;<ESC>;
+" Adds a semicolon to the end of the line TODO: I would like to use marks to place the cursor back where it was at the start
+
+" ## File Actions
+nmap <Leader>fo :action GotoFile<cr>
+nmap <Leader>ff :action FindInPath<cr>
+nmap <Leader>fs :action NewScratchFile<cr>
+nmap <Leader>fn :action NewFile<cr>
+
+" ## Run
+nmap <Leader>rr :action RunClass<cr>
+nmap <Leader>rc :action ChooseRunConfiguration<cr>
+nmap <Leader>r<Leader> :action Run<cr>
+
+" ## Debug
+nmap <Leader>dc :action ChooseDebugConfiguration<cr>
+nmap <Leader>dd :action DebugClass<cr>
+nmap <Leader>d<Leader> :action Debug<cr>
+
+" ## Git
+nmap <Leader>gb :action Git.Branches<cr>
+" "Git Branches" gives you a searchable list of branches
+
+nmap <Leader>gg :action Vcs.QuickListPopupAction<cr>
+" "Git Git" gives you a list of git actions
+
+nmap <Leader>ga :action Annotate<cr>
+" "Git Annotate"
+
+nmap <Leader>gc :action CheckinProject<cr>
+" "Git Commit" brings you to the commit panel
+
+nmap <Leader>gpr :!gh pr create --web<cr>
+" "Git Pull Request"
+
+nmap <Leader>gpp :action Vcs.Push<cr>
+" "Git P-Push"
+
+nmap <Leader>gu :action Vcs.UpdateProject<cr>
+" "Git Update" essentially fetches and pulls
+
+nmap <Leader>gy :action com.github.kawamataryo.copygitlink.CopyPermalink<cr>
+" "Git Yank" uses the copy git link plugin to copy a link to the current line in the github repository.
+
+" ## IdeaVim
+" It's important to always be able to quickly improve my vimrc file, and the following commands help immensely:
+nmap <Leader>vt :action VimFindActionIdAction<cr>
+" "Vim Track" This toggles a pop up that tells you the name of the actions you are running. Once you have the name of the action, you can create a binding for it in the .ideavimrc
+
+nmap <Leader>vm :e ~/.ideavimrc<cr>
+" "Vim Map" (as in keymap) This opens the .ideavimrc for editing
+
+nmap <Leader>vr :action IdeaVim.ReloadVimRc.reload<cr>
+" "Vim Reload" We can quickly reload it using this command.
+
+" Tasks
+nmap <Leader>kf :action tasks.goto<cr>
+" "tasK Find" opens the task tracker.
+
+nmap <Leader>hh :action ShowHoverInfo<cr>
+
+" Help
+" nmap <Leader>?? :action Tool_External Tools_Show Leader Actions<cr>
+" TODO: This used to be a command line tool I wrote to show you the actions, spacemacs style
